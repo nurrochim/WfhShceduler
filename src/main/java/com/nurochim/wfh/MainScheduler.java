@@ -27,7 +27,7 @@ public class MainScheduler {
 	}
 	
 	private static void SchedulerCpns() throws SchedulerException {
-    	String expCheckOutCpns = "0 0,0 19,21 ? * MON-FRI";
+    	String expCheckOutCpns = "0 0 19,21 ? * MON-FRI";
     	String expCheckInCpns = "0 20 7,8 ? * MON-FRI";
     	
     	String exp = "0 40,59 21,21 ? * MON-FRI";
@@ -53,8 +53,8 @@ public class MainScheduler {
 	}
 	
 	private static void SchedulerDirInovasi() throws SchedulerException {
-		String expCheckOutDI = "0 0 16,18,20,22 ? * MON-FRI";
-    	String expCheckInDI1 = "0 9 6,9 ? * MON-FRI";
+		String expCheckOutDI = "0 5 16,17,18,20,22,23 ? * MON-FRI";
+    	String expCheckInDI1 = "0 9 6,9,10 ? * MON-FRI";
     	String expCheckInDI2 = "0 14 7,8 ? * MON-FRI";
     	
         Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
