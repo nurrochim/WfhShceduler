@@ -53,21 +53,41 @@ public class MainScheduler {
 	}
 	
 	private static void SchedulerDirInovasi() throws SchedulerException {
-		String expCheckOutDI = "0 5 16,17,18,20,22,23 ? * MON-FRI";
-    	String expCheckInDI1 = "0 9 6,9,10 ? * MON-FRI";
-    	String expCheckInDI2 = "0 14 7,8 ? * MON-FRI";
+		
+		String expCheckOutDI1 = "0 10/15 16 ? * 1-7";
+		String expCheckOutDI2 = "0 45 15 ? * 1-7";
+		String expCheckOutDI3 = "0 5 17,18,20,22,23 ? * 1-7";
+    	
+    	String expCheckInDI1 = "0 55 5 ? * 1-7";
+    	String expCheckInDI2 = "0 9,30,45 6 ? * 1-7";
+    	String expCheckInDI3 = "0 5,20,45 7 ? * 1-7";
+    	String expCheckInDI4 = "0 14 8,9,10 ? * 1-7";
     	
         Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
                 .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
         Trigger triggerChekIn2 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI2")
                 .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI2)).build();
-    	Trigger triggerChekOut2 = TriggerBuilder.newTrigger().withIdentity("triggerChekOut1")
-                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckOutDI)).build();
+    	Trigger triggerChekIn3 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI3")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI3)).build();
+    	Trigger triggerChekIn4 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI4")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI4)).build();
+    	Trigger triggerChekOut1 = TriggerBuilder.newTrigger().withIdentity("triggerChekOut1")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckOutDI1)).build();
+    	Trigger triggerChekOut2 = TriggerBuilder.newTrigger().withIdentity("triggerChekOut2")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckOutDI2)).build();
+    	Trigger triggerChekOut3 = TriggerBuilder.newTrigger().withIdentity("triggerChekOut3")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckOutDI3)).build();
+    	
+    	
     	
     	Set<Trigger> triggers2 = new HashSet<Trigger>();
     	triggers2.add(triggerChekIn1);
     	triggers2.add(triggerChekIn2);
+    	triggers2.add(triggerChekIn3);
+    	triggers2.add(triggerChekIn4);
+        triggers2.add(triggerChekOut1);
         triggers2.add(triggerChekOut2);
+        triggers2.add(triggerChekOut3);
         
         JobDetail DirInovasiJob = JobBuilder.newJob(WfhDirInovasiJob.class).withIdentity("DirInovasiJob").build();
         Map<JobDetail, Set<? extends Trigger>> triggersAndJobsDI = new HashMap<JobDetail, Set<? extends Trigger>>();
