@@ -27,8 +27,8 @@ public class MainScheduler {
 	}
 	
 	private static void SchedulerCpns() throws SchedulerException {
-    	String expCheckOutCpns = "0 0 19,21 ? * MON-FRI";
-    	String expCheckInCpns = "0 17 7,8 ? * MON-FRI";
+    	String expCheckOutCpns = "0 0 19,21,23 ? * MON-FRI";
+    	String expCheckInCpns = "0 17 7,8,9 ? * MON-FRI";
     	
     	String exp = "0 40,59 21,21 ? * MON-FRI";
     	
