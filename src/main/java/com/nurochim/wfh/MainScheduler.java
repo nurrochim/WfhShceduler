@@ -54,14 +54,14 @@ public class MainScheduler {
 	
 	private static void SchedulerDirInovasi() throws SchedulerException {
 		
-		String expCheckOutDI1 = "0 10/15 16 ? * 1-7";
-		String expCheckOutDI2 = "0 45 15 ? * 1-7";
-		String expCheckOutDI3 = "0 5 17,18,20,22,23 ? * 1-7";
+		String expCheckOutDI1 = "0 10/15 16 ? * MON-FRI";
+		String expCheckOutDI2 = "0 45 15 ? * MON-FRI";
+		String expCheckOutDI3 = "0 5 17,18,20,22,23 ? * MON-FRI";
     	
-    	String expCheckInDI1 = "0 55 5 ? * 1-7";
-    	String expCheckInDI2 = "0 9,30,45 6 ? * 1-7";
-    	String expCheckInDI3 = "0 5,20,45 7 ? * 1-7";
-    	String expCheckInDI4 = "0 14 8,9,10 ? * 1-7";
+    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
+    	String expCheckInDI2 = "0 9,30,45 6 ? * MON-FRI";
+    	String expCheckInDI3 = "0 5,20,45 7 ? * MON-FRI";
+    	String expCheckInDI4 = "0 14 8,9,10 ? * MON-FRI";
     	
         Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
                 .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
