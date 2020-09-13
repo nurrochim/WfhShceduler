@@ -58,13 +58,13 @@ public class MainScheduler {
 		String expCheckOutDI2 = "0 45 15 ? * MON-FRI";
 		String expCheckOutDI3 = "0 5 17,18,20,22,23 ? * MON-FRI";
     	
-    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
-    	String expCheckInDI2 = "0 9,30,45 6 ? * MON-FRI";
-    	String expCheckInDI3 = "0 5,20,45 7 ? * MON-FRI";
+//    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
+    	String expCheckInDI2 = "0 14,29,45 6 ? * MON-FRI";
+    	String expCheckInDI3 = "0 4,19,45 7 ? * MON-FRI";
     	String expCheckInDI4 = "0 14 8,9,10 ? * MON-FRI";
     	
-        Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
-                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
+//        Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
+//                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
         Trigger triggerChekIn2 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI2")
                 .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI2)).build();
     	Trigger triggerChekIn3 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI3")
@@ -81,7 +81,7 @@ public class MainScheduler {
     	
     	
     	Set<Trigger> triggers2 = new HashSet<Trigger>();
-    	triggers2.add(triggerChekIn1);
+//    	triggers2.add(triggerChekIn1);
     	triggers2.add(triggerChekIn2);
     	triggers2.add(triggerChekIn3);
     	triggers2.add(triggerChekIn4);
