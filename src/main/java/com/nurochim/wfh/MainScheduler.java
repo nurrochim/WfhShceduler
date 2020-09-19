@@ -27,9 +27,9 @@ public class MainScheduler {
 	}
 	
 	private static void SchedulerCpns() throws SchedulerException {
-    	String expCheckOutCpns = "0 0 19,21,23 ? * MON-FRI";
+    	String expCheckOutCpns = "0 30 20 ? * MON-FRI";
     	String expCheckInCpns1 = "0 15 7 ? * MON-FRI";
-		String expCheckInCpns2 = "0 20 8,9 ? * MON-FRI";
+		String expCheckInCpns2 = "0 20 8 ? * MON-FRI";
     	
     	String exp = "0 40,59 21,21 ? * MON-FRI";
     	
@@ -58,14 +58,14 @@ public class MainScheduler {
 	
 	private static void SchedulerDirInovasi() throws SchedulerException {
 		
-		String expCheckOutDI1 = "0 10/15 16 ? * MON-FRI";
-		String expCheckOutDI2 = "0 41 15 ? * MON-THU";
-		String expCheckOutDI3 = "0 5 17,18,20,22,23 ? * MON-FRI";
+		String expCheckOutDI1 = "0 30 16 ? * MON-FRI";
+		String expCheckOutDI2 = "0 43 15 ? * MON-THU";
+		String expCheckOutDI3 = "0 5 18,20 ? * MON-FRI";
     	
 //    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
-    	String expCheckInDI2 = "0 12,29,45 6 ? * MON-FRI";
-    	String expCheckInDI3 = "0 4,19,45 7 ? * MON-FRI";
-    	String expCheckInDI4 = "0 14 8,9,10 ? * MON-FRI";
+    	String expCheckInDI2 = "0 30 6 ? * MON-FRI";
+    	String expCheckInDI3 = "0 19 7 ? * MON-FRI";
+    	String expCheckInDI4 = "0 14 8 ? * MON-FRI";
     	
 //        Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
 //                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
