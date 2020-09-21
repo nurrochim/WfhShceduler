@@ -20,6 +20,7 @@ public class MainScheduler {
         try {
             SchedulerCpns();
             SchedulerDirInovasi();
+//        	SchedulerCiCo();
         }
         catch(Exception e){ 
             e.printStackTrace();
@@ -64,8 +65,8 @@ public class MainScheduler {
     	
 //    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
     	String expCheckInDI2 = "0 30 6 ? * MON-FRI";
-    	String expCheckInDI3 = "0 19 7 ? * MON-FRI";
-    	String expCheckInDI4 = "0 14 8 ? * MON-FRI";
+    	String expCheckInDI3 = "0 25 7 ? * MON-FRI";
+    	String expCheckInDI4 = "0 25 8 ? * MON-FRI";
     	
 //        Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
 //                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
@@ -100,5 +101,25 @@ public class MainScheduler {
         Scheduler scheduler2 = new StdSchedulerFactory().getScheduler(); 
         scheduler2.start(); 
         scheduler2.scheduleJobs(triggersAndJobsDI, false);
+	}
+	
+	private static void SchedulerCiCo() throws SchedulerException {
+    	String expCheckInCpns1 = "0 45 6 ? * MON-FRI";
+		
+    	Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerCico1")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInCpns1)).build();
+		
+    	Set<Trigger> triggers = new HashSet<Trigger>();
+        triggers.add(triggerChekIn1);
+		
+        JobDetail CicoJob = JobBuilder.newJob(WfhCicoJob.class).withIdentity("CicoJob").build();
+        Map<JobDetail, Set<? extends Trigger>> triggersAndJobsCpns = new HashMap<JobDetail, Set<? extends Trigger>>();
+        triggersAndJobsCpns.put(CicoJob, triggers);
+        
+        // Direktorat Inovasi
+        Scheduler scheduler1 = new StdSchedulerFactory().getScheduler(); 
+        scheduler1.start(); 
+        scheduler1.scheduleJobs(triggersAndJobsCpns, false);
+        
 	}
 }
