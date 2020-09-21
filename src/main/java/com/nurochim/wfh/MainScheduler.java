@@ -65,8 +65,8 @@ public class MainScheduler {
     	
 //    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
     	String expCheckInDI2 = "0 30 6 ? * MON-FRI";
-    	String expCheckInDI3 = "0 25 7 ? * MON-FRI";
-    	String expCheckInDI4 = "0 25 8 ? * MON-FRI";
+    	String expCheckInDI3 = "0 30 7 ? * MON-FRI";
+    	String expCheckInDI4 = "0 30 8 ? * MON-FRI";
     	
 //        Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerChekInDI1")
 //                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
