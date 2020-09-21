@@ -60,11 +60,11 @@ public class MainScheduler {
 	private static void SchedulerDirInovasi() throws SchedulerException {
 		
 		String expCheckOutDI1 = "0 30 16 ? * MON-FRI";
-		String expCheckOutDI2 = "0 43 15 ? * MON-THU";
-		String expCheckOutDI3 = "0 5 18,20 ? * MON-FRI";
+		String expCheckOutDI2 = "0 50 15 ? * MON-THU";
+		String expCheckOutDI3 = "0 30 17,20 ? * MON-FRI";
     	
 //    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
-    	String expCheckInDI2 = "0 30 6 ? * MON-FRI";
+    	String expCheckInDI2 = "0 30,55 6 ? * MON-FRI";
     	String expCheckInDI3 = "0 30 7 ? * MON-FRI";
     	String expCheckInDI4 = "0 30 8 ? * MON-FRI";
     	
