@@ -18,9 +18,9 @@ public class MainScheduler {
 	
 	public static void main(String[] args) {
         try {
-            SchedulerCpns();
-            SchedulerDirInovasi();
-//        	SchedulerCiCo();
+//            SchedulerCpns();
+//            SchedulerDirInovasi();
+        	SchedulerCiCo();
         }
         catch(Exception e){ 
             e.printStackTrace();
@@ -28,7 +28,7 @@ public class MainScheduler {
 	}
 	
 	private static void SchedulerCpns() throws SchedulerException {
-    	String expCheckOutCpns = "0 30 20 ? * MON-FRI";
+    	String expCheckOutCpns = "0 45 20 ? * MON-FRI";
     	String expCheckInCpns1 = "0 15 7 ? * MON-FRI";
 		String expCheckInCpns2 = "0 20 8 ? * MON-FRI";
     	
