@@ -18,9 +18,9 @@ public class MainScheduler {
 	
 	public static void main(String[] args) {
         try {
-//            SchedulerCpns();
-//            SchedulerDirInovasi();
-        	SchedulerCiCo();
+            SchedulerCpns();
+            SchedulerDirInovasi();
+//        	SchedulerCiCo();
         }
         catch(Exception e){ 
             e.printStackTrace();
