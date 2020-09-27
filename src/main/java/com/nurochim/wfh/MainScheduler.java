@@ -21,6 +21,7 @@ public class MainScheduler {
             SchedulerCpns();
             SchedulerDirInovasi();
 //        	SchedulerCiCo();
+//        	SchedulerDirInovasi2();
         }
         catch(Exception e){ 
             e.printStackTrace();
@@ -64,7 +65,7 @@ public class MainScheduler {
 		String expCheckOutDI3 = "0 30 17,20 ? * MON-FRI";
     	
 //    	String expCheckInDI1 = "0 55 5 ? * MON-FRI";
-    	String expCheckInDI2 = "0 30,55 6 ? * MON-FRI";
+    	String expCheckInDI2 = "0 55 6 ? * MON-FRI";
     	String expCheckInDI3 = "0 30 7 ? * MON-FRI";
     	String expCheckInDI4 = "0 30 8 ? * MON-FRI";
     	
@@ -103,8 +104,46 @@ public class MainScheduler {
         scheduler2.scheduleJobs(triggersAndJobsDI, false);
 	}
 	
+private static void SchedulerDirInovasi2() throws SchedulerException {
+		
+		String expCheckOutDI1 = "0 0/20 17-21 ? * MON-FRI";
+		String expCheckOutDI2 = "0 50 15 ? * MON-THU";
+		String expCheckOutDI3 = "0 20/20 16 ? * MON-FRI";
+		
+    	String expCheckInDI1 = "0 0/15 7-9 ? * MON-FRI";
+    	String expCheckInDI2 = "0 30 6 ? * MON-FRI";
+    	
+        Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("tChekInDI1")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI1)).build();
+        Trigger triggerChekIn2 = TriggerBuilder.newTrigger().withIdentity("tChekInDI2")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInDI2)).build();
+    	Trigger triggerChekOut1 = TriggerBuilder.newTrigger().withIdentity("tChekOut1")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckOutDI1)).build();
+    	Trigger triggerChekOut2 = TriggerBuilder.newTrigger().withIdentity("tChekOut2")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckOutDI2)).build();
+    	Trigger triggerChekOut3 = TriggerBuilder.newTrigger().withIdentity("tChekOut3")
+                .withSchedule(CronScheduleBuilder.cronSchedule(expCheckOutDI3)).build();
+    	
+    	
+    	
+    	Set<Trigger> triggers2 = new HashSet<Trigger>();
+    	triggers2.add(triggerChekIn1);
+    	triggers2.add(triggerChekIn2);
+    	triggers2.add(triggerChekOut1);
+        triggers2.add(triggerChekOut2);
+        triggers2.add(triggerChekOut3);
+        
+        JobDetail DirInovasiJob = JobBuilder.newJob(WfhDirInovasiJob2.class).withIdentity("DirInovasi2Job").build();
+        Map<JobDetail, Set<? extends Trigger>> triggersAndJobsDI = new HashMap<JobDetail, Set<? extends Trigger>>();
+        triggersAndJobsDI.put(DirInovasiJob, triggers2);
+        
+        Scheduler scheduler2 = new StdSchedulerFactory().getScheduler(); 
+        scheduler2.start(); 
+        scheduler2.scheduleJobs(triggersAndJobsDI, false);
+	}
+	
 	private static void SchedulerCiCo() throws SchedulerException {
-    	String expCheckInCpns1 = "0 45 6 ? * MON-FRI";
+    	String expCheckInCpns1 = "0 50 6 ? * MON-FRI";
 		
     	Trigger triggerChekIn1 = TriggerBuilder.newTrigger().withIdentity("triggerCico1")
                 .withSchedule(CronScheduleBuilder.cronSchedule(expCheckInCpns1)).build();
@@ -120,6 +159,5 @@ public class MainScheduler {
         Scheduler scheduler1 = new StdSchedulerFactory().getScheduler(); 
         scheduler1.start(); 
         scheduler1.scheduleJobs(triggersAndJobsCpns, false);
-        
 	}
 }
